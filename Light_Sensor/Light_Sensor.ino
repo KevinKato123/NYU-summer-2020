@@ -12,7 +12,7 @@ void setup() {
 
 void loop() {
   analogValue = analogRead(ldr_pin);
-  Serial.println("LDR Value is: "});
+  Serial.println("LDR Value is: ");
   Serial.println(analogValue);
   delay(50);
 }
