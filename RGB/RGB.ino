@@ -7,15 +7,22 @@ void setup() {
   pinMode(LED_BLUE, OUTPUT);
 }
 void loop() {
+  //Purple
   digitalWrite(LED_RED, LOW);
-  delay(500);
-  digitalWrite(LED_RED, HIGH);
-  
   digitalWrite(LED_BLUE, LOW);
   delay(500);
+  digitalWrite(LED_RED, HIGH);
   digitalWrite(LED_BLUE, HIGH);
-
+  //Cyan
+  digitalWrite(LED_BLUE, LOW);
   digitalWrite(LED_GREEN, LOW);
   delay(500);
+  digitalWrite(LED_BLUE, HIGH);
   digitalWrite(LED_GREEN, HIGH);
+  //Yellow
+  digitalWrite(LED_GREEN, LOW);
+  digitalWrite(LED_RED, LOW);
+  delay(500);
+  digitalWrite(LED_GREEN, HIGH);
+  digitalWrite(LED_RED, HIGH);
   }
