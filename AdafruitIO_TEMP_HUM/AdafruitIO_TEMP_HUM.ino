@@ -24,7 +24,7 @@
 #include <DHT_U.h>
 
 // pin connected to DH22 data line
-#define DATA_PIN 2
+#define DATA_PIN 4
 
 // create DHT22 instance
 DHT_Unified dht(DATA_PIN, DHT22);
