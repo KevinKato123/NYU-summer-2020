@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h>
+vc #include <SoftwareSerial.h>
 SoftwareSerial mySerialPort(4, 5); //Rx, Tx
 char msgIn, msgOut; 
 //bool isKevin = false; 
