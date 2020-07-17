@@ -1,12 +1,3 @@
-int sum(int a , int b);
-
-int main() {
-  sum(a , b);
-}
-//Definition
-int sum(int a , int b){
-  return a + b
-}
 
 
 
