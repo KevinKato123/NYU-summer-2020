@@ -14,18 +14,23 @@
 Adafruit_ILI9341 tft = Adafruit_ILI9341 (TFT_CS, TFT_DC);
 Adafruit_STMPE610 ts = Adafruit_STMPE610(STMPE_CS);
 #define BoxSize 40
-void setup() {
-  Serial.begin(115200);
-  if(!ts.begin()){
-    Serial.print("Error : STMPE Error");
-  }
-  tft.begin();
+void drawButton(){
   tft.fillScreen(ILI9341_BLACK); 
   tft.fillRect(BoxSize*1,BoxSize*1, BoxSize*4, BoxSize *2, ILI9341_WHITE);
   tft.setCursor(BoxSize*1.5,BoxSize*1.5); 
   tft.setTextSize(1);
   tft.setTextColor(ILI9341_BLACK);
   tft.println("TOUCH HERE");
+}
+
+void setup() {
+  Serial.begin(115200);
+  if(!ts.begin()){
+    Serial.print("Error : STMPE Error");
+  }
+  tft.begin();
+  drawButton();
+  
 }
 
 void loop() {
@@ -45,7 +50,8 @@ void loop() {
     Serial.println("DETECTED");
     tft.println("PRESSED");
     tft. printf("X: %d | Y: %d", p.x, p.y);
-    delay(1000);
+    delay(5000);
+    drawButton();
     yield(); 
   }
 
