@@ -34,7 +34,6 @@ void drawButton() {
   }
   bool detectTouch() {
     TS_Point p = ts.getPoint();
-    bool flag = false;
     if (p.x < TS_MINX && p.x > TS_MAXX && p.y < TS_MAXY && p.y > TS_MINY) {
       p.x = map(p.x, TS_MINX, TS_MAXX, 0, tft.width());
       p.y = map(p.y, TS_MINY, TS_MAXY, 0, tft.height());
