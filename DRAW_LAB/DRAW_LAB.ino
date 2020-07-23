@@ -23,59 +23,60 @@ bool detectTouch() {
     p.y = map(p.y, TS_MINY, TS_MAXY, 0, tft.height());
   }
 }
-    void drawIDCARD() {
-      tft.fillScreen(ILI9341_BLACK);
-      tft.setCursor(0, 150);
-      yield();
-      tft.setTextColor(ILI9341_BLUE); tft.setTextSize(2);
-      tft.println("Viewpoint School");
-      tft.setTextColor(ILI9341_GREEN); tft.setTextSize(2);
-      tft.println("Kevin Kato");
-      tft.setTextColor(ILI9341_RED); tft.setTextSize(2);
-      tft.println("I am 15, and born on December 26, 2004.");}
-       void ID_PIC(){
-          tft.drawRGBBitmap(0, 0, ID_CARDE, ID_CARDE_WIDTH, ID_CARDE_HEIGHT);
-        }
-      void drawIDPIC() {
-        ID_PIC();
-        tft.drawRGBBitmap(0, 0, ID_CARDE, ID_CARDE_WIDTH, ID_CARDE_HEIGHT);
-        delay(5000);}
-       
-        void setup() {
-          tft.begin();
-          Serial.begin(115200);
-          uint8_t x = tft.readcommand8(ILI9341_RDMODE);
-          Serial.print("Display Power Mode: 0x"); Serial.println(x, HEX);
-          x = tft.readcommand8(ILI9341_RDMADCTL);
-          Serial.print("MADCTL Mode: 0x"); Serial.println(x, HEX);
-          x = tft.readcommand8(ILI9341_RDPIXFMT);
-          Serial.print("Pixel Format: 0x"); Serial.println(x, HEX);
-          x = tft.readcommand8(ILI9341_RDIMGFMT);
-          Serial.print("Image Format: 0x"); Serial.println(x, HEX);
-          x = tft.readcommand8(ILI9341_RDSELFDIAG);
-          Serial.print("Self Diagnostic: 0x"); Serial.println(x, HEX);
-          ID_PIC();
-          tft.drawRGBBitmap(0, 0, ID_CARD, ID_CARD_WIDTH, ID_CARD_HEIGHT);
-        }
-        void ID_DETAILS() {
-          tft.fillScreen(ILI9341_BLACK);
-          tft.setCursor(0, 150);
-          yield();
-          tft.setTextColor(ILI9341_BLUE); tft.setTextSize(2);
-          tft.println("Viewpoint School");
-          tft.setTextColor(ILI9341_GREEN); tft.setTextSize(2);
-          tft.println("Kevin Kato");
-          tft.setTextColor(ILI9341_RED); tft.setTextSize(2);
-          tft.println("I am 15, and born on December 26, 2004.");
-        }
-        void loop(void) {
-          if (detectTouch()) {
-            delay(200);
-            if (detectTouch()) {
-              drawIDPIC();
-              delay(500);
-              drawIDCARD();
-              yield();
-            }
-          }
-        }
+void ID_PIC(){
+  tft.drawRGBBitmap(0,0,ID_CARD,ID_CARD_WIDTH,ID_CARD_HEIGHT);
+}
+void drawIDCARD() {
+  tft.fillScreen(ILI9341_BLACK);
+  tft.setCursor(0, 150);
+  yield();
+  tft.setTextColor(ILI9341_BLUE); tft.setTextSize(2);
+  tft.println("Viewpoint School");
+  tft.setTextColor(ILI9341_GREEN); tft.setTextSize(2);
+  tft.println("Kevin Kato");
+  tft.setTextColor(ILI9341_RED); tft.setTextSize(2);
+  tft.println("I am 15, and born on December 26, 2004.");
+}
+void IDE_PIC() {
+  tft.drawRGBBitmap(0, 0, ID_CARDE, ID_CARDE_WIDTH, ID_CARDE_HEIGHT);
+}
+void drawIDEPIC() {
+  ID_PIC();
+  tft.drawRGBBitmap(0, 0, ID_CARDE, ID_CARDE_WIDTH, ID_CARDE_HEIGHT);
+  delay(5000);
+}
+    
+
+void setup() {
+  Serial.begin(115200);
+  if(!ts.begin()){
+    Serial.print("Error");
+  }
+  tft.begin();
+  drawIDCARD();
+  }
+
+
+
+void ID_DETAILS() {
+  tft.fillScreen(ILI9341_BLACK);
+  tft.setCursor(0, 150);
+  yield();
+  tft.setTextColor(ILI9341_BLUE); tft.setTextSize(2);
+  tft.println("Viewpoint School");
+  tft.setTextColor(ILI9341_GREEN); tft.setTextSize(2);
+  tft.println("Kevin Kato");
+  tft.setTextColor(ILI9341_RED); tft.setTextSize(2);
+  tft.println("I am 15, and born on December 26, 2004.");
+}
+void loop(void) {
+  if (detectTouch()) {
+      delay(200);
+      if (detectTouch()) {
+        drawIDEPIC();
+        delay(500);
+        drawIDCARD();
+        yield();
+      }
+    }
+  }
